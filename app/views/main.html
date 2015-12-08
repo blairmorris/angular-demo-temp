@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="col-sm-6 col-md-8">
+		<div class="row">
+			<div id="detail-pane" class="panel panel-lg panel-primary">
+				<div class="panel-body text-center">
+					<img class="center-block img-thumbnail img-responsive" ng-src="http://lorempixel.com/600/300/{{selected.firstName ? 'people' : 'nightlife'}}/{{selected.firstName || selected.name}}">
+					<div ng-if="selected.movies">
+						<h2>{{selected.firstName}} {{selected.lastName}}</h2>
+						<h4 class="small text-muted">{{itemType}} - Age {{selected.age}}</h4>
+						<hr>
+						<div ng-repeat="movie in selected.movies">
+							<h4>{{movie.name}} - {{movie.releaseYear}}</h4>
+							<uib-rating ng-model="movie.rating" max="5" readonly="true"></uib-rating></h4>
+						</div>
+					</div>
+					<div class="dl-horizontal" ng-if="selected.actors">
+						<h2>{{selected.name}} - {{selected.releaseYear}}</h2>
+						<uib-rating ng-model="selected.rating" max="5" readonly="true"></uib-rating>
+						<p>Directed by {{selected.director.firstName}} {{selected.director.lastName}}</p>
+						<hr>
+						<h3>Starring:</h3>
+						<li ng-repeat="actor in selected.actors">{{actor.firstName}} {{actor.lastName}}</li>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-4">
+		<div class="row" id="search">
+			<div class="col-sm-12">
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+					<a class="btn btn-default" ng-class="{'active': itemType == 'actor'}" ng-click="setType('actor')">Actors</a>
+					<a class="btn btn-default" ng-class="{'active': itemType == 'director'}" ng-click="setType('director')">Directors</a>
+					<a class="btn btn-default" ng-class="{'active': itemType == 'movie'}" ng-click="setType('movie')">Movies</a>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div id="list-container" class="row">
+			<div class="col-sm-12">
+				<div class="list-group" ng-switch="itemType">
+					<a ng-class="{'active': selected == actor}" ng-switch-default href="#/" class="list-group-item" ng-repeat="actor in actors" ng-bind="actor.firstName + ' ' + actor.lastName" ng-click="setActor(actor)"></a>
+					<a ng-switch-when="director" ng-class="{'active': selected == director}"  href="#/" class="list-group-item" ng-repeat="director in directors" ng-bind="director.firstName + ' ' + director.lastName" ng-click="setDirector(director)"></a>
+					<a ng-switch-when="movie" href="#/" ng-class="{'active': selected == movie}" class="list-group-item" ng-repeat="movie in movies" ng-bind="movie.name" ng-click="setMovie(movie)"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
