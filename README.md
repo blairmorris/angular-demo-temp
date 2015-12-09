@@ -1,6 +1,11 @@
 # Angular Movie App Demo
 This is a temporary project for a mini code challenge. It will be made private after 7 days from it's  release.
 
-## Running the demo
+## Viewing the demo
 
-`npm start` or `node server.js` will fire off express and will automatically open up a browser to the app.
+Currently, the demo is being hosted via Heroku at https://blair-iq.herokuapp.com
+
+## Running Locally
+
+`npm install` will install all npm modules, followed by the post-install script that will install the necessary bower packages.
+`npm start` or `node server.js` will start the server and automatically open the app in your default browser.
