@@ -24,12 +24,12 @@ angular.module('iqApp')
 
 		$scope.setMovie = function(movie){
 			var pad = function pad(num, size){ return ('000000000' + num).substr(-size); };
-			movie.actors = _.map(_.pluck(_.where(relations, {movieID: movie.id}), 'actorID'), function(id){return _.findWhere(actors, {id:id})});
+			movie.actors = _.map(_.pluck(_.where(relations, {movieID: movie.id}), 'actorID'), function(id){return _.findWhere(actors, {id:id});});
 			movie.director = _.findWhere(directors, {id: pad(movie.directorID, 10 + movie.directorID.length)});
 			$scope.selected = movie;
 		};
 
 		$scope.setType = function(type){
 			$scope.itemType = type;
-		}
+		};
 	});
