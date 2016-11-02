@@ -1,5 +1,5 @@
 # Angular Movie App Demo
-This is a temporary project for a mini code challenge. It will be made private after 7 days from it's  release.
+This is a small angular app project for a previous code challenge.
 
 ## Viewing the demo
 
